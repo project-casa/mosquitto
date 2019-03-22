@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  casa-mqtt:
+    build: .
+    image: roeldev/casa-mosquitto
+    container_name: casa-mqtt
+    restart: always
+    ports:
+      - 1883:1883
+      - 8883:8883
+      - 9001:9001
+    volumes:
+      - ./config:/mosquitto/config
+      - ./data:/mosquitto/data
+      - ./log:/mosquitto/log
+    environment:
+      - MQTT_USERNAME=mqtt
+      - MQTT_PASSWORD=secret
+      - MQTT_CERT_CN=casa-mqtt
