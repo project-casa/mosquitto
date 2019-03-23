@@ -2,6 +2,7 @@
 set DOCKER_CONTAINER=casa-mqtt
 
 if "%1" == "build" goto build
+if "%1" == "publish" goto publish
 if "%1" == "start" goto start
 if "%1" == "stop" goto stop
 if "%1" == "restart" goto stop
@@ -11,6 +12,10 @@ goto help
 
 :build
 docker-compose build
+goto end
+
+:publish
+docker push roeldev/casa-mosquitto:latest
 goto end
 
 :start
@@ -39,6 +44,7 @@ echo   do -- [command]
 echo.
 echo Actions:
 echo   build    Build Docker image
+echo   publish  Publish Docker image to Docker Hub
 echo   start    Start Docker container
 echo   stop     Stop Docker container
 echo   restart  Restart Docker container
