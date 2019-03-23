@@ -1,8 +1,6 @@
 # https://hub.docker.com/_/eclipse-mosquitto
 FROM eclipse-mosquitto:1.5.6
 
-# http://www.steves-internet-guide.com/mosquitto-tls/
-
 COPY mosquitto.conf /mosquitto/
 COPY mosquitto_certs.sh /usr/bin/mosquitto_certs
 
