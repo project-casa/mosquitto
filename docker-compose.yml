@@ -17,4 +17,4 @@ services:
     environment:
       - MQTT_USERNAME=mqtt
       - MQTT_PASSWORD=secret
-      - MQTT_CERT_CN=casa-mqtt
+      - CA_COMMON_NAME=casa-mqtt

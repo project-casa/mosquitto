@@ -23,10 +23,10 @@ over SSL/TLS. It also adds some default configs for websockets and logging.
 |---------------|-------------|
 |```MQTT_USERNAME```| Default username
 |```MQTT_PASSWORD```| Default password
-|```MQTT_CERT_CN```| Common Name used when creating the certificates
+|```CA_COMMON_NAME```| Certificate Authority Common Name 
 
 ## Creating certificates
-Run ```mosquitto_certs``` in the Docker container to create new certificates.
+Run ```mosquitto_certs [-o] [cn]``` in the Docker container to create new certificates.
 
 ## Links
 - Docker hub: https://hub.docker.com/r/roeldev/casa-mosquitto

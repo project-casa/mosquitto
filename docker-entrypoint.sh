@@ -18,12 +18,12 @@ fi
 
 # create tls certificates
 if [ ! -d /mosquitto/config/certs ]; then
-    if [ -z "${MQTT_CERT_CN}" ]; then
-      echo "MQTT_CERT_CN certificate Common Name not defined"
+    if [ -z "${CA_COMMON_NAME}" ]; then
+      echo "CA_COMMON_NAME certificate Common Name not defined"
       exit 1
     fi
 
-    mosquitto_certs ${MQTT_CERT_CN}
+    mosquitto_certs ${CA_COMMON_NAME}
 fi
 
 exec "$@"
