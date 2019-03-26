@@ -12,30 +12,30 @@ goto help
 
 :build
 docker-compose build
-goto end
+goto:eof
 
 :publish
 docker push roeldev/casa-mosquitto:latest
-goto end
+goto:eof
 
 :start
 docker-compose up -d
-goto end
+goto:eof
 
 :stop
 docker-compose down
 if "%1" == "restart" goto start
-goto end
+goto:eof
 
 :login
 docker exec -it %DOCKER_CONTAINER% sh
-goto end
+goto:eof
 
 :exec
 set ARGS=%*
 set ARGS=%ARGS:~3%
 docker exec -it %DOCKER_CONTAINER% %ARGS%
-goto end
+goto:eof
 
 :help
 echo Usage:
@@ -50,6 +50,3 @@ echo   stop     Stop Docker container
 echo   restart  Restart Docker container
 echo   --       Execute the command in the Docker container
 echo.
-goto end
-
-:end
