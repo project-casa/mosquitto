@@ -29,9 +29,11 @@ over SSL/TLS. It also adds some default configs for websockets and logging.
 Run ```mosquitto_certs [-o] [cn]``` in the Docker container to create new certificates.
 
 ## Links
+- Github: https://github.com/project-casa/mosquitto
 - Docker hub: https://hub.docker.com/r/roeldev/casa-mosquitto
+- MQTT wiki: https://github.com/mqtt/mqtt.github.io/wiki
 - Mosquitto project: https://github.com/eclipse/mosquitto
-- MQTT client: http://mqttfx.org/
+- MQTT.fx MQTT client: http://mqttfx.org/
 - Arduino MQTT library: https://learn.adafruit.com/mqtt-adafruit-io-and-you/arduino-plus-library-setup
 
 ## Inspired by
