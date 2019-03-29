@@ -1,5 +1,5 @@
-Project "Casa" Mosquitto
-========================
+Mosquitto MQTT broker
+=====================
 
 This Docker image adds a default password and creates CA and server certificates so the MQTT broker can be accessed 
 over SSL/TLS. It also adds some default configs for websockets and logging.
@@ -25,8 +25,16 @@ over SSL/TLS. It also adds some default configs for websockets and logging.
 |```MQTT_PASSWORD```| Default password
 |```CA_COMMON_NAME```| Certificate Authority Common Name 
 
-## Creating certificates
+## Creating certificates with `mosquitto_certs`
 Run ```mosquitto_certs [-o] [cn]``` in the Docker container to create new certificates.
+
+### Options
+- `-o` overwrite existing certificates
+
+### Examples
+`mosquitto_certs -o 192.168.0.254` Creates new certificates for the broker with common name the given ip address.
+`mosquitto_certs mqtt.local.lan` Creates certificates when they do not already exist.
+
 
 ## Links
 - Github: https://github.com/project-casa/mosquitto
