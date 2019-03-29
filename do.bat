@@ -1,5 +1,6 @@
 @echo off
 set DOCKER_CONTAINER=casa-mqtt
+set version=
 
 if "%1" == "build" goto build
 if "%1" == "publish" goto publish
@@ -15,7 +16,17 @@ docker-compose build
 goto:eof
 
 :publish
-docker push roeldev/casa-mosquitto:latest
+if "%version%" == "" set version=%2
+if "%version%" == "" set /P version=Enter a version: 
+if "%version%" == "" goto publish
+if not "%version:~,1%" == "v" set version=v%version%
+
+set image=roeldev/casa-mosquitto:%version%
+echo You are about to push "%image%" to Docker hub.
+set /P continue=Are you sure? [y/n] 
+if not "%continue%" == "y" goto:eof
+
+docker push %image%
 goto:eof
 
 :start
