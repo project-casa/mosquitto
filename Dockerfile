@@ -1,18 +1,15 @@
 # https://hub.docker.com/_/eclipse-mosquitto
-FROM eclipse-mosquitto:1.5.6
+FROM eclipse-mosquitto:1.6.1
 
-COPY mosquitto.conf /mosquitto/
 COPY mosquitto_certs.sh /usr/bin/mosquitto_certs
 
 RUN set -x && \
-    apk --no-cache add --virtual deps && \
-    apk add \
+    chmod +x /usr/bin/mosquitto_certs && \
+    apk add --no-cache \
         openssl \
-        mosquitto-clients \
-        && \
-    apk del deps && \
-    chmod +x /usr/bin/mosquitto_certs
+        mosquitto-clients
 
+COPY mosquitto.conf /mosquitto/
 WORKDIR /mosquitto/
 
 COPY docker-entrypoint.sh /
