@@ -3,3 +3,4 @@ config/certs
 config/passwd
 data/
 log/
+.docker.env
