@@ -1,6 +1,8 @@
 #!/bin/sh
+set -e
 
-if [ -z "${1}" ]; then
+if [ -z "${1}" ]
+then
   echo "Common Name not defined"
   exit 1
 fi
@@ -10,23 +12,26 @@ CERTS_DIR=/mosquitto/config/certs
 OPT_OVERWRITE=false
 
 # extract options
-while getopts ":o:" opt; do
-  case $opt in
+while getopts ":o:" opt
+do
+  case ${opt} in
     o) OPT_OVERWRITE=true
     ;;
   esac
 done
 
-# check if we should overwrite current certifactes or
+# check if we should overwrite current certificates or
 # have an empty dir and need to create them
-if [ ! -d ${CERTS_DIR} ]; then
+if [ ! -d ${CERTS_DIR} ]
+then
     mkdir ${CERTS_DIR}
-elif [ ${OPT_OVERWRITE} = true ]; then
+elif [ ${OPT_OVERWRITE} = true ]
+then
     rm -rf \
         ${CERTS_DIR}/ca.* \
         ${CERTS_DIR}/server.*
 else
-    # we have certifactes and should not overwrite them
+    # we have certificates and should not overwrite them
     exit
 fi
 
