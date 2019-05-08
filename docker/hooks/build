@@ -2,13 +2,18 @@
 
 LABEL_BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 LABEL_VCS_REF=$(git rev-parse --short HEAD)
+IMAGE_NAME=roeldev/casa-mosquitto:${DOCKER_TAG}
 
 echo "docker build \
     --build-arg LABEL_BUILD_DATE=${LABEL_BUILD_DATE} \
     --build-arg LABEL_VCS_REF=${LABEL_VCS_REF} \
-    -f ${DOCKERFILE_PATH} -t ${IMAGE_NAME} ."
+    --file ${DOCKERFILE_PATH} \
+    --tag ${IMAGE_NAME} \
+    ."
 
 docker build \
     --build-arg LABEL_BUILD_DATE=${LABEL_BUILD_DATE} \
     --build-arg LABEL_VCS_REF=${LABEL_VCS_REF} \
-    -f ${DOCKERFILE_PATH} -t ${IMAGE_NAME} .
+    --file ${DOCKERFILE_PATH} \
+    --tag ${IMAGE_NAME} \
+    .
