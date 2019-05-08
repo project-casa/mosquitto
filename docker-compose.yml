@@ -4,7 +4,9 @@ services:
   casa-mqtt:
     image: roeldev/casa-mosquitto
     container_name: casa-mqtt
-    build: ./docker/
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
     env_file:
       - .docker.env
     volumes:

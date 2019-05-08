@@ -14,7 +14,7 @@ LABEL maintainer="Roel Schut" \
       org.label-schema.vcs-url="https://github.com/project-casa/mosquitto" \
       org.label-schema.schema-version="1.0"
 
-COPY mosquitto_certs.sh /usr/bin/mosquitto_certs
+COPY docker/mosquitto_certs.sh /usr/bin/mosquitto_certs
 
 RUN set -x && \
     chmod +x /usr/bin/mosquitto_certs && \
@@ -22,9 +22,9 @@ RUN set -x && \
         openssl \
         mosquitto-clients
 
-COPY mosquitto.conf /mosquitto/
+COPY docker/mosquitto.conf /mosquitto/
 WORKDIR /mosquitto/
 
-COPY docker-entrypoint.sh /
+COPY docker/docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["/usr/sbin/mosquitto", "-c", "/mosquitto/mosquitto.conf"]
