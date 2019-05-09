@@ -4,7 +4,7 @@ Mosquitto MQTT broker
 [![Latest release][latest-release-img]][latest-release-url]
 [![Build status][build-status-img]][build-status-url]
 [![Layers][image-layers-img]][image-layers-url]
-![Image size][image-size-img]
+[![Image size][image-size-img]][image-size-url]
 
 [latest-release-img]: https://img.shields.io/github/release/project-casa/mosquitto.svg?label=latest
 [latest-release-url]: https://github.com/project-casa/mosquitto/releases
@@ -13,6 +13,7 @@ Mosquitto MQTT broker
 [image-layers-img]: https://img.shields.io/microbadger/layers/roeldev/casa-mosquitto/latest.svg
 [image-layers-url]: https://microbadger.com/images/roeldev/casa-mosquitto
 [image-size-img]: https://img.shields.io/microbadger/image-size/roeldev/casa-mosquitto/latest.svg
+[image-size-url]: https://hub.docker.com/r/roeldev/casa-mosquitto/tags
 
 
 This Docker image adds a default password and creates CA and server certificates so the MQTT broker can be accessed
