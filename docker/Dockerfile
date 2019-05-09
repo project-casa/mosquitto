@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/eclipse-mosquitto
-FROM eclipse-mosquitto:1.6.1
+FROM eclipse-mosquitto:1.6.2
 
 ARG DOCKER_REPO
 ARG DOCKER_TAG
