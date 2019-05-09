@@ -1,15 +1,30 @@
 Mosquitto MQTT broker
 =====================
 
-This Docker image adds a default password and creates CA and server certificates so the MQTT broker can be accessed 
+[![Latest release][latest-release-img]][latest-release-url]
+[![Build status][build-status-img]][build-status-url]
+[![Layers][image-layers-img]][image-layers-url]
+![Image size][image-size-img]
+
+[latest-release-img]: https://img.shields.io/github/release/project-casa/mosquitto.svg?label=latest
+[latest-release-url]: https://github.com/project-casa/mosquitto/releases
+[build-status-img]: https://img.shields.io/docker/cloud/build/roeldev/casa-mosquitto.svg
+[build-status-url]: https://hub.docker.com/r/roeldev/casa-mosquitto/builds
+[image-layers-img]: https://img.shields.io/microbadger/layers/roeldev/casa-mosquitto/latest.svg
+[image-layers-url]: https://microbadger.com/images/roeldev/casa-mosquitto
+[image-size-img]: https://img.shields.io/microbadger/image-size/roeldev/casa-mosquitto/latest.svg
+
+
+This Docker image adds a default password and creates CA and server certificates so the MQTT broker can be accessed
 over SSL/TLS. It also adds some default configs for websockets and logging.
+
 
 ### Ports
 | Port | Connection |
 |------|------------|
 |```1883```| Default
 |```8883```| SSL/TLS
-|```9001```| Websocket
+|```9001```| Websockets
 
 ### Volumes
 | Path | Contains |
@@ -23,7 +38,8 @@ over SSL/TLS. It also adds some default configs for websockets and logging.
 |---------------|-------------|
 |```MQTT_USERNAME```| Default username
 |```MQTT_PASSWORD```| Default password
-|```CA_COMMON_NAME```| Certificate Authority Common Name 
+|```CA_COMMON_NAME```| Certificate Authority Common Name
+
 
 ## Creating certificates with `mosquitto_certs`
 Run ```mosquitto_certs [-o] [cn]``` in the Docker container to create new certificates.
@@ -32,8 +48,8 @@ Run ```mosquitto_certs [-o] [cn]``` in the Docker container to create new certif
 - `-o` overwrite existing certificates
 
 ### Examples
-`mosquitto_certs -o 192.168.0.254` Creates new certificates for the broker with common name the given ip address.
-`mosquitto_certs mqtt.local.lan` Creates certificates when they do not already exist.
+`mosquitto_certs 192.168.0.254` Creates new certificates using the ip address as common name.
+`mosquitto_certs -o mqtt.local.lan` Creates and overwrites any existing certificates using the given domain name.
 
 
 ## Links
@@ -44,6 +60,11 @@ Run ```mosquitto_certs [-o] [cn]``` in the Docker container to create new certif
 - MQTT.fx MQTT client: http://mqttfx.org/
 - Arduino MQTT library: https://learn.adafruit.com/mqtt-adafruit-io-and-you/arduino-plus-library-setup
 
+
 ## Inspired by
 - http://www.steves-internet-guide.com/mosquitto-tls/
 - https://github.com/thelebster/example-mosquitto-simple-auth-docker
+
+
+## License
+[GPL-2.0+](LICENSE) © 2019 [Roel Schut](https://roelschut.nl)
