@@ -14,7 +14,9 @@ LABEL maintainer="Roel Schut" \
       org.label-schema.vcs-url="https://github.com/project-casa/mosquitto" \
       org.label-schema.schema-version="1.0"
 
-COPY docker/versions /etc/profile.d/
+ENV ENV="/etc/motd"
+COPY docker/motd /etc/motd.d/
+COPY docker/motd.sh /etc/motd
 COPY docker/mosquitto_certs.sh /usr/bin/mosquitto_certs
 
 RUN set -x && \
